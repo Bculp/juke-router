@@ -21,3 +21,12 @@ export const fetchAndGoToAlbum = album =>
         dispatch(receiveAlbum(album));
         dispatch(switchLocation('album'));
       });
+
+//new fetch route for front end route
+export const fetchAlbum = albumId => 
+  dispatch => 
+    fetch(`/api/albums/${albumId}`)
+      .then(res => res.json())
+      .then(album => {
+        dispatch(receiveAlbum(album));
+      });
